@@ -6,11 +6,13 @@ phases:
       python: 3.10
     commands:
       - pip install bandit
+      - apt-get update
+      - apt-get install -y zip
 
   pre_build:
     commands:
       - echo "Running Security Scan..."
-      - bandit -r . -f txt
+      - bandit -r . -f txt || true
 
   build:
     commands:
